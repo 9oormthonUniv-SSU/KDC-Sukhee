@@ -1,9 +1,16 @@
 from django.contrib import admin
 from .models import Question, Choice
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 2
 
 class QuestionAdmin(admin.ModelAdmin):
-    # Question 추가 페이지 내 항목들의 순서 변경(지정)
-    fields = ['pub_date', 'question_text'] # fields 변수명은 고정입니다.
+    fieldsets = [
+        # ('field 집합의 소제목', {'fields': ['field 이름 1', 'field 이름 2', ...]}),
+        ("Question title", {'fields': ['question_text']}),
+        ('Date information', {'fields': ['pub_date']}),
+    ]
+    inlines = [ChoiceInline]
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
