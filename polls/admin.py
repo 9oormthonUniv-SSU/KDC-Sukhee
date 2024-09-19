@@ -11,6 +11,8 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),    ]
     inlines = [ChoiceInline]
     list_display = ('question_text', 'pub_date', 'was_published_recently')
+    list_filter = ['pub_date'] #  필터 기능
+    search_fields = ['question_text'] # 검색 기능
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
