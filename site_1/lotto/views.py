@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 
 def index(request):
     lottos = GuessNumbers.objects.all()
-    return render(request, 'lotto/default.html', {'lottos':lottos})
+    return render(request, 'lotto/templates/lotto/default.html', {'lottos':lottos})
 
 def hello(request) :
         return HttpResponse('<h1 style = "color:red">Hello, world!</h1>')
@@ -22,8 +22,8 @@ def post(request):
             return redirect('index')
     else:
         form = PostForm()  # empty form
-        return render(request, "lotto/form.html", {"form": form})
+        return render(request, "lotto/templates/lotto/form.html", {"form": form})
 
 def detail(request, lottokey):
     lotto = GuessNumbers.objects.get(pk = lottokey)
-    return render(request, "lotto/detail.html", {"lotto": lotto})
+    return render(request, "lotto/templates/lotto/detail.html", {"lotto": lotto})
