@@ -3,6 +3,6 @@ from .models import ImageUploadModel
 
 
 class ImageUploadAdmin(admin.ModelAdmin):
-    list_display = ('description', 'document', ) # list_display 변수명은 고정
+    list_display = ('description', 'document', )
 
 admin.site.register(ImageUploadModel, ImageUploadAdmin)
