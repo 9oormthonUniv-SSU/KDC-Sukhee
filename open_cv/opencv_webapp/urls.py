@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views # 같은 폴더 내의 views.py를 import
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
